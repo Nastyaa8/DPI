@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SportCraft</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Mate SC', serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+    }
+
+    header, footer {
+      background-color: #fff8f0;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header .logo, footer .logo {
+      text-align: center;
+    }
+
+    .logo .main {
+  font-size: 32px;
+  font-weight: bold;
+  color: #A41018;
+  border: 4px solid #A41018;
+  display: inline-block;
+  padding: 5px 15px;
+}
+
+
+    .logo .sub {
+      letter-spacing: 0.5em;
+      margin-top: 5px;
+      font-size: 18px;
+    }
+
+    .icons img {
+      width: 24px;
+      height: 24px;
+      margin: 0 5px;
+    }
+
+    .hero {
+      background: url('images/image 7.png') center center / cover no-repeat;
+      height: 500px;
+      position: relative;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 60px;
+      left: 30px;
+      color: #FFF8DD;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 0;
+      text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
+    }
+
+    .hero-text a {
+      display: inline-block;
+      margin-top: 15px;
+      background: #A41018;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+
+    }
+
+    .categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 70px 0;
+  align-items: flex-start; /* выравнивание по верхнему краю */
+}
+
+.category {
+  width: 400px;
+  height: 350px; /* фиксированная высота */
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.category img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* картинка заполнит контейнер аккуратно */
+  display: block;
+  border-radius: 8px;
+}
+
+.category span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fdf3d2;
+  font-weight: bold;
+  text-decoration: underline;
+  pointer-events: none; /* чтобы клики шли на картинку, если нужно */
+}
+
+
+
+    .products {
+      padding: 40px;
+    }
+
+    .products h2 {
+      font-size: 24px;
+      color: #A41018;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      background: white;
+      width: 330px;
+      text-align: center;
+      font-family: sans-serif;
+      position: relative;
+    }
+
+    .product .discount {
+      background-color: #A41018;
+      color: white;
+      padding: 5px 10px;
+      top: 0px;
+  right: 75px;
+      font-weight: bold;
+      position: relative;
+      text-align: left;
+      display: inline-block; 
+      
+  max-width: 100%;        
+    }
+
+    .product .discount::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-top: 10px solid #A41018;
+    }
+
+    .product img {
+      max-height: 100px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .product .info {
+      padding: 10px;
+    }
+
+    .product .info .name {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .product .info .price {
+      color: #A41018;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .product .info .old-price {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+  text-align: left;
+}
+
+/* Выравнивание колонок */
+.footer-column {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* Центровка логотипа */
+.footer-logo {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Нижние ссылки — по центру */
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  margin-top: 40px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+
+
+
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+  <header class="flex justify-between items-center p-4 flex-wrap bg-cream">
+    <!-- Левая часть: бургер и поиск (только на мобилке) -->
+    <div class="flex items-center space-x-4 md:hidden">
+      <img src="images/меню.png" alt="Menu" class="icon w-6 h-6 cursor-pointer" />
+      <img src="images/иконка поиска.png" alt="Search" class="icon w-6 h-6 cursor-pointer" />
+    </div>
+  
+    <!-- Логотип по центру -->
+    <div class="text-center mx-auto">
+      <div class="border-4 border-red-700 px-4 py-1 inline-block">
+        <span class="text-4xl text-red-700 font-bold tracking-widest">SPORT</span>
+      </div>
+      <div class="flex gap-2 mt-2 text-black text-xl tracking-[0.5em] pl-4">
+        <span>C</span><span>R</span><span>A</span><span>F</span><span>T</span>
+      </div>
+      
+    </div>
+    
+  
+    <!-- Правая часть: аккаунт и корзина (всегда видны) -->
+    <div class="flex items-center space-x-4">
+      <!-- Скрываем поиск справа на мобилке -->
+      <img src="images/иконка поиска.png" alt="Search" class="icon w-6 h-6 cursor-pointer hidden md:block" />
+      <img src="images/иконка личный кабинет.png" alt="Account" class="icon w-6 h-9 cursor-pointer" />
+      <img src="images/иконка корзина.png" alt="Cart" class="icon w-6 h-6 cursor-pointer" />
+    </div>
+  </header>
+  
+  
+  
+  
+  
+  
+  <div class="hero">
+    <div class="hero-text">
+      <h1>YOU HAVE THE GOAL,<br>WE HAVE THE GEAR.</h1>
+      <a href="#">GO ORDER</a>
+    </div>
+  </div>
+
+  <section class="categories">
+    <div class="category">
+      <button>
+        <img src="images/women.png" alt="Women" />
+      </button>
+  
+      <span>Women</span>
+    </div>
+    <div class="category">
+     <button>
+      <img src="images/men.png" alt="Men" />
+     </button> 
+      <span>Men</span>
+    </div>
+    <div class="category">
+      <button>
+        <img src="images/kids.png" alt="Kids" />
+      </button>
+     
+      <span>Kids</span>
+    </div>
+  </section>
+  <section class="products">
+    <h2>New Arrivals</h2>
+    
+    <div class="product-grid">
+      <button>
+      <div class="product">
+        <div class="discount">Spring Discounts 20%</div>
+        <img src="images/Image.png" alt="Men’s Signition" />
+        <div class="info">
+          <div class="name">Men’s Signition</div>
+          <div class="price">233 USD</div>
+          <div class="old-price">293 USD</div>
+        </div>
+      </div>
+    </button>
+    <button>
+      <div class="product">
+        <div class="discount">Spring Discounts 20%</div>
+        <img src="images/Image.png" alt="Men’s Signition" />
+        <div class="info">
+          <div class="name">Men’s Signition</div>
+          <div class="price">233 USD</div>
+          <div class="old-price">293 USD</div>
+        </div>
+      </div>
+    </button>
+    <button>
+      <div class="product">
+        <div class="discount">Spring Discounts 20%</div>
+        <img src="images/Image.png" alt="Men’s Signition" />
+        <div class="info">
+          <div class="name">Men’s Signition</div>
+          <div class="price">233 USD</div>
+          <div class="old-price">293 USD</div>
+        </div>
+      </div>
+    </button>
+    <button>
+      <div class="product">
+        <div class="discount">Spring Discounts 20%</div>
+        <img src="images/Image.png" alt="Men’s Signition" />
+        <div class="info">
+          <div class="name">Men’s Signition</div>
+          <div class="price">233 USD</div>
+          <div class="old-price">293 USD</div>
+        </div>
+      </button>
+      </div>
+    </div>
+
+  </section>
+  
+
+  <footer class="bg-cream py-10 text-sm mt-8 font-['Mate_SC']">
+    <div class="max-w-7xl mx-auto px-4">
+  
+      <!-- Верхняя часть: три колонки -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 items-start text-center md:text-left">
+  
+        <!-- Левая колонка: Company -->
+        <div class="px-4">
+          <div class="font-bold mb-2 text-lg">Company</div>
+          <ul class="space-y-1">
+            <li><a href="#">Coming Soon</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+  
+       <!-- Центр: Логотип -->
+<div class="flex flex-col items-center">
+  <div class="border-4 border-red-700 px-4 py-1">
+    <span class="text-4xl text-red-700 font-bold tracking-widest">SPORT</span>
+  </div>
+  <div class="flex gap-2 mt-2 text-black text-xl tracking-[0.5em]">
+    <span>C</span><span>R</span><span>A</span><span>F</span><span>T</span>
+  </div>
+  <div class="mt-2 text-xs">© 2025 - SportCraft</div>
+</div>
+
+  
+        <!-- Правая колонка: Follow Me -->
+        <div class="md:text-right  px-4">
+          <div class="font-bold mb-3 text-lg">Follow Me</div>
+          <div class="flex justify-center md:justify-end gap-3 mt-2">
+            <a href="#"><img src="images/instagram.png" alt="Instagram" class="w-6 h-6" /></a>
+            <a href="#"><img src="images/facebook.png" alt="Facebook" class="w-6 h-6" /></a>
+            <a href="#"><img src="images/telegram.png" alt="Telegram" class="w-6 h-6" /></a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Нижние ссылки -->
+      <div class="mt-8 border-t pt-4 flex flex-wrap justify-center gap-4 text-xs text-center">
+        <a href="#">Home</a>
+        <a href="#">Online Store</a>
+        <a href="#">Promotion</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+  
+
+</body>
+</html>
